@@ -1,2 +1,2 @@
 # go
-Trying out Golang with unit tests.
+Learning Golang with unit tests.

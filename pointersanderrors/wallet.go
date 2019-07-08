@@ -1,6 +1,9 @@
 package pointersanderrors
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 //Bitcoin - new
 type Bitcoin int
@@ -17,8 +20,21 @@ type Wallet struct {
 
 //Deposit to Wallet
 func (w *Wallet) Deposit(amount Bitcoin) {
-	fmt.Printf("address of balance in Deposit is %v \n", &w.balance)
 	w.balance += amount
+}
+
+//ErrInsufficientFunds for errors
+var ErrInsufficientFunds = errors.New("cannot withdraw, insufficient funds")
+
+//Withdraw from Wallet
+func (w *Wallet) Withdraw(amount Bitcoin) error {
+
+	if amount > w.balance {
+		return ErrInsufficientFunds
+	}
+
+	w.balance -= amount
+	return nil
 }
 
 //Balance of Wallet

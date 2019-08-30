@@ -12,7 +12,7 @@ var ErrNotFound = errors.New("could not find the word you were looking for")
 
 // Add function
 func (d Dictionary) Add(word, definition string) {
-	d[word] = definition
+	d[word] = definition 
 }
 
 // Search using Dictionary
